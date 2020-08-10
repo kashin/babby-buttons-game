@@ -1,16 +1,16 @@
 [
     {
-        "name":"a",
+        "name":"Alpaca",
         "color":"aqua",
-        "imageSource":"",
-        "soundSource":"",
+        "imageSource":"qrc:/images/Alpaca.jpg",
+        "soundSource":"qrc:/sounds/alpaca.wav",
         "shortcut":"a"
     },
     {
-        "name":"black",
+        "name":"Bear",
         "color":"black",
-        "imageSource":"",
-        "soundSource":"",
+        "imageSource":"qrc:/images/Bear.jpg",
+        "soundSource":"qrc:/sounds/bear.mp3",
         "shortcut":"b"
     }
 ]

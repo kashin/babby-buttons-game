@@ -30,6 +30,16 @@ QString ShortcutsModel::buttonColor(int index)
     return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getColor() : QString();
 }
 
+QString ShortcutsModel::buttonSoundSource(int index)
+{
+    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getSoundsSource() : QString();
+}
+
+QString ShortcutsModel::buttonImageSource(int index)
+{
+    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getImageSource() : QString();
+}
+
 void ShortcutsModel::loadShortcuts(const QString &dataPath)
 {
     QString path = dataPath.isEmpty() ? DEFAULT_SHORTCUTS_DATA_PATH : dataPath;

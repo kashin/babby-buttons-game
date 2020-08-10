@@ -14,6 +14,8 @@ public:
 
     Q_INVOKABLE QString buttonName(int index);
     Q_INVOKABLE QString buttonColor(int index);
+    Q_INVOKABLE QString buttonSoundSource(int index);
+    Q_INVOKABLE QString buttonImageSource(int index);
     Q_INVOKABLE void loadShortcuts(const QString &dataPath);
     QStringList getShortcuts() const;
     void setShortcuts(const QStringList &value);

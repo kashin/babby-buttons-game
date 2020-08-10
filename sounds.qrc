@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sounds/alpaca.wav</file>
+        <file>sounds/bear.mp3</file>
+    </qresource>
+</RCC>

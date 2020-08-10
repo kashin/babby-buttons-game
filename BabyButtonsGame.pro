@@ -1,4 +1,4 @@
-QT += quick
+QT += quick multimedia
 
 CONFIG += c++11
 
@@ -18,7 +18,9 @@ SOURCES += \
         main.cpp \
         shortcutsmodel.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    images.qrc \
+    sounds.qrc
 
 OTHER_FILES += .gitignore \
                game_data.json \
