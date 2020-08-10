@@ -14,12 +14,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        buttondata.cpp \
         main.cpp \
         shortcutsmodel.cpp
 
 RESOURCES += qml.qrc
 
-OTHER_FILES += .gitignore
+OTHER_FILES += .gitignore \
+               game_data.json \
+               LICENSE
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -33,4 +36,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    buttondata.h \
     shortcutsmodel.h
+
+DISTFILES += \
+    game_data.json

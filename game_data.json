@@ -1,0 +1,16 @@
+[
+    {
+        "name":"a",
+        "color":"aqua",
+        "imageSource":"",
+        "soundSource":"",
+        "shortcut":"a"
+    },
+    {
+        "name":"black",
+        "color":"black",
+        "imageSource":"",
+        "soundSource":"",
+        "shortcut":"b"
+    }
+]

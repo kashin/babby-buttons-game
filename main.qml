@@ -6,25 +6,38 @@ ApplicationWindow {
     id: mainWindow
     property var shortcuts: []
 
+    visible: true
     visibility: "FullScreen"
     title: qsTr("Hello My Baby")
     Rectangle {
+        id: mainBackground
         anchors.fill: parent
-        color: "darkblue"
+        color: "white"
+
+        Grid {
+            spacing: 5
+            Repeater {
+                model: shortcutsModel.shortcuts
+                RoundButton {
+                    radius: 5
+                    text: shortcutsModel.buttonName(index)
+                    Shortcut {
+                        context: Qt.ApplicationShortcut
+                        enabled: true
+                        sequence: modelData
+                        onActivated: {
+                            mainBackground.color = shortcutsModel.buttonColor(index)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     ShortcutsModel {
-        id: model
+        id: shortcutsModel
     }
-
-    Repeater {
-        count: model.shortcuts.length
-        Item {
-            Shortcut {
-                context: Qt.ApplicationShortcut
-                enabled: true
-                sequence: modelData
-            }
-        }
+    Component.onCompleted: {
+        shortcutsModel.loadShortcuts("")
     }
 }
