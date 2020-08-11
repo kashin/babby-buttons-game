@@ -5,6 +5,8 @@
 #include <QJsonObject>
 #include <QFile>
 #include <QList>
+#include <QTextToSpeech>
+#include <QDebug>
 
 #include "buttondata.h"
 
@@ -12,37 +14,50 @@ static const QLatin1String BUTTON_NAME_KEY("name");
 static const QLatin1String BUTTON_COLOR_KEY("color");
 static const QLatin1String BUTTON_IMAGE_SOURCE_KEY("imageSource");
 static const QLatin1String BUTTON_SOUND_SORCE_KEY("soundSource");
+static const QLatin1String BUTTON_VOICE_LINE_KEY("voiceLine");
 static const QLatin1String BUTTON_SHORTCUT_KEY("shortcuts");
 static const QLatin1String DEFAULT_SHORTCUTS_DATA_PATH("game_data.json");
 
 ShortcutsModel::ShortcutsModel(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      voiceGenerator(new QTextToSpeech(this))
 {
 }
 
 QString ShortcutsModel::buttonName(int index)
 {
-    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getName() : QString();
+    auto button = findButtonDataByIndex(index);
+    return button ? button->getName() : QString();
 }
 
 QString ShortcutsModel::buttonColor(int index)
 {
-    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getColor() : QString();
+    auto button = findButtonDataByIndex(index);
+    return button ? button->getColor() : QString();
 }
 
 QString ShortcutsModel::buttonSoundSource(int index)
 {
-    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getSoundsSource() : QString();
+    auto button = findButtonDataByIndex(index);
+    return button ? button->getSoundsSource() : QString();
+}
+
+QString ShortcutsModel::buttonVoiceLine(int index)
+{
+    auto button = findButtonDataByIndex(index);
+    return button ? button->getVoiceLine() : QString();
 }
 
 QString ShortcutsModel::buttonImageSource(int index)
 {
-    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getImageSource() : QString();
+    auto button = findButtonDataByIndex(index);
+    return button ? button->getImageSource() : QString();
 }
 
 QStringList ShortcutsModel::buttonShortcuts(int index) const
 {
-    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getShortcuts() : QStringList();
+    auto button = findButtonDataByIndex(index);
+    return button ? button->getShortcuts() : QStringList();
 }
 
 QStringList ShortcutsModel::getButtons() const
@@ -66,6 +81,7 @@ void ShortcutsModel::loadShortcuts(const QString &dataPath)
             auto object = iter->toObject();
             data->setName(object.value(BUTTON_NAME_KEY).toString());
             data->setColor(object.value(BUTTON_COLOR_KEY).toString());
+            data->setVoiceLine(object.value(BUTTON_VOICE_LINE_KEY).toString());
             data->setImageSource(object.value(BUTTON_IMAGE_SOURCE_KEY).toString());
             data->setSoundsSource(object.value(BUTTON_SOUND_SORCE_KEY).toString());
             auto shortcutsArray = object.value(BUTTON_SHORTCUT_KEY).toArray();
@@ -85,8 +101,24 @@ void ShortcutsModel::loadShortcuts(const QString &dataPath)
     file.close();
 }
 
+void ShortcutsModel::say(const QString &line)
+{
+    qWarning() << "Voice generator is not available:" << voiceGenerator->state();
+    if (!voiceGenerator || voiceGenerator->state() == QTextToSpeech::BackendError)
+    {
+        qWarning() << "Voice generator is not available:" << voiceGenerator->availableEngines() << voiceGenerator->availableLocales() << voiceGenerator->availableVoices().size();
+        return;
+    }
+    voiceGenerator->say(line);
+}
+
 void ShortcutsModel::addButton(const QString &newButton)
 {
     buttons << newButton;
     emit buttonsChanged(buttons);
+}
+
+const ButtonData *ShortcutsModel::findButtonDataByIndex(int index) const
+{
+    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index) : nullptr;
 }

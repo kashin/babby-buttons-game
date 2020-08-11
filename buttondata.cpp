@@ -55,3 +55,13 @@ void ButtonData::setShortcuts(const QStringList &value)
 {
     shortcuts = value;
 }
+
+QString ButtonData::getVoiceLine() const
+{
+    return voiceLine;
+}
+
+void ButtonData::setVoiceLine(const QString &value)
+{
+    voiceLine = value;
+}

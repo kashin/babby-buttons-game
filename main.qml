@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.3
 import QtMultimedia 5.9
 import baby.buttons.game 1.0
 
@@ -15,24 +16,24 @@ ApplicationWindow {
         anchors.fill: parent
         color: "white"
 
-        Grid {
+        GridLayout {
             id: buttonsGrid
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 5
+            width: parent.width
             Repeater {
                 id: buttonsRepeater
                 property int currentButtonIndex: -1
                 model: shortcutsModel.buttons
                 RoundButton {
-                    property int myIndex: index
                     function buttonActionTriggered() {
                         soundSource.stop()
-                        buttonsRepeater.currentButtonIndex = myIndex
-                        soundSource.source = shortcutsModel.buttonSoundSource(myIndex)
+                        buttonsRepeater.currentButtonIndex = index
+                        soundSource.source = shortcutsModel.buttonSoundSource(index)
                         soundSource.play()
-                        image.source = shortcutsModel.buttonImageSource(myIndex)
+                        shortcutsModel.say(shortcutsModel.buttonVoiceLine(index))
+                        image.source = shortcutsModel.buttonImageSource(index)
                     }
 
                     background: Rectangle {

@@ -1,0 +1,5 @@
+TODO: add proper README file :)
+
+Build dependencies:
+* qtspeech5-flite-plugin
+* libqt5texttospeech5-dev

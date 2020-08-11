@@ -4,6 +4,7 @@
 #include <QObject>
 
 class ButtonData;
+class QTextToSpeech;
 
 class ShortcutsModel : public QObject
 {
@@ -15,11 +16,16 @@ public:
     Q_INVOKABLE QString buttonName(int index);
     Q_INVOKABLE QString buttonColor(int index);
     Q_INVOKABLE QString buttonSoundSource(int index);
+    Q_INVOKABLE QString buttonVoiceLine(int index);
     Q_INVOKABLE QString buttonImageSource(int index);
     Q_INVOKABLE QStringList buttonShortcuts(int index) const;
     QStringList getButtons() const;
     Q_INVOKABLE void loadShortcuts(const QString &dataPath);
+    Q_INVOKABLE void say(const QString &line);
     void addButton(const QString &newButton);
+
+private:
+    const ButtonData *findButtonDataByIndex(int index) const;
 
 signals:
     void buttonsChanged(QStringList buttons);
@@ -27,6 +33,7 @@ signals:
 private:
     QStringList buttons;
     QList<ButtonData*> buttonsData;
+    QTextToSpeech *voiceGenerator;
 };
 
 #endif // SHORTCUTSMODEL_H

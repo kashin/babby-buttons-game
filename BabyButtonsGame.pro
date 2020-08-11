@@ -1,4 +1,4 @@
-QT += quick multimedia
+QT += quick multimedia texttospeech
 
 CONFIG += c++11
 
@@ -42,4 +42,5 @@ HEADERS += \
     shortcutsmodel.h
 
 DISTFILES += \
+    README \
     game_data.json

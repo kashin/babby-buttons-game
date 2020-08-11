@@ -21,6 +21,9 @@ public:
     QString getSoundsSource() const;
     void setSoundsSource(const QString &value);
 
+    QString getVoiceLine() const;
+    void setVoiceLine(const QString &value);
+
     QStringList getShortcuts() const;
     void setShortcuts(const QStringList &value);
 
@@ -29,6 +32,7 @@ private:
     QString color;
     QString imageSource;
     QString soundsSource;
+    QString voiceLine;
     QStringList shortcuts;
 };
 
