@@ -8,6 +8,14 @@
         "shortcuts":["а","f"]
     },
     {
+        "name":"Дятел",
+        "color":"orangered",
+        "imageSource":"qrc:/images/Woodpecker.jpg",
+        "soundSource":"qrc:/sounds/woodpecker.wav",
+        "voiceLine":"Deyatel",
+        "shortcuts":["д","l"]
+    },
+    {
         "name":"Йошкар-Ола",
         "color":"yellowgreen",
         "imageSource":"qrc:/images/Yoshkorola.jpg",
