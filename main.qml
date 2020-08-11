@@ -24,7 +24,7 @@ ApplicationWindow {
             Repeater {
                 id: buttonsRepeater
                 property int currentButtonIndex: -1
-                model: shortcutsModel.shortcuts
+                model: shortcutsModel.buttons
                 RoundButton {
                     property int myIndex: index
                     function buttonActionTriggered() {
@@ -46,7 +46,7 @@ ApplicationWindow {
                     Shortcut {
                         context: Qt.ApplicationShortcut
                         enabled: true
-                        sequence: modelData
+                        sequences: shortcutsModel.buttonShortcuts(index)
                         onActivated: {
                             buttonActionTriggered()
                         }

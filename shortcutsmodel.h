@@ -8,7 +8,7 @@ class ButtonData;
 class ShortcutsModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList shortcuts READ getShortcuts NOTIFY shortcutsChanged)
+    Q_PROPERTY(QStringList buttons READ getButtons NOTIFY buttonsChanged)
 public:
     explicit ShortcutsModel(QObject *parent = nullptr);
 
@@ -16,16 +16,16 @@ public:
     Q_INVOKABLE QString buttonColor(int index);
     Q_INVOKABLE QString buttonSoundSource(int index);
     Q_INVOKABLE QString buttonImageSource(int index);
+    Q_INVOKABLE QStringList buttonShortcuts(int index) const;
+    QStringList getButtons() const;
     Q_INVOKABLE void loadShortcuts(const QString &dataPath);
-    QStringList getShortcuts() const;
-    void setShortcuts(const QStringList &value);
-    void addShortcut(const QString &newShortcut);
+    void addButton(const QString &newButton);
 
 signals:
-    void shortcutsChanged(QStringList shortcuts);
+    void buttonsChanged(QStringList buttons);
 
 private:
-    QStringList shortcuts;
+    QStringList buttons;
     QList<ButtonData*> buttonsData;
 };
 

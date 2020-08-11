@@ -21,15 +21,15 @@ public:
     QString getSoundsSource() const;
     void setSoundsSource(const QString &value);
 
-    QString getShortcut() const;
-    void setShortcut(const QString &value);
+    QStringList getShortcuts() const;
+    void setShortcuts(const QStringList &value);
 
 private:
     QString name;
     QString color;
     QString imageSource;
     QString soundsSource;
-    QString shortcut;
+    QStringList shortcuts;
 };
 
 #endif // BUTTONDATA_H

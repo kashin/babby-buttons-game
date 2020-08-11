@@ -12,7 +12,7 @@ static const QLatin1String BUTTON_NAME_KEY("name");
 static const QLatin1String BUTTON_COLOR_KEY("color");
 static const QLatin1String BUTTON_IMAGE_SOURCE_KEY("imageSource");
 static const QLatin1String BUTTON_SOUND_SORCE_KEY("soundSource");
-static const QLatin1String BUTTON_SHORTCUT_KEY("shortcut");
+static const QLatin1String BUTTON_SHORTCUT_KEY("shortcuts");
 static const QLatin1String DEFAULT_SHORTCUTS_DATA_PATH("game_data.json");
 
 ShortcutsModel::ShortcutsModel(QObject *parent)
@@ -40,6 +40,16 @@ QString ShortcutsModel::buttonImageSource(int index)
     return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getImageSource() : QString();
 }
 
+QStringList ShortcutsModel::buttonShortcuts(int index) const
+{
+    return (index >= 0 && index  < buttonsData.count()) ? buttonsData.at(index)->getShortcuts() : QStringList();
+}
+
+QStringList ShortcutsModel::getButtons() const
+{
+    return buttons;
+}
+
 void ShortcutsModel::loadShortcuts(const QString &dataPath)
 {
     QString path = dataPath.isEmpty() ? DEFAULT_SHORTCUTS_DATA_PATH : dataPath;
@@ -58,28 +68,25 @@ void ShortcutsModel::loadShortcuts(const QString &dataPath)
             data->setColor(object.value(BUTTON_COLOR_KEY).toString());
             data->setImageSource(object.value(BUTTON_IMAGE_SOURCE_KEY).toString());
             data->setSoundsSource(object.value(BUTTON_SOUND_SORCE_KEY).toString());
-            data->setShortcut(object.value(BUTTON_SHORTCUT_KEY).toString());
+            auto shortcutsArray = object.value(BUTTON_SHORTCUT_KEY).toArray();
+            QStringList shortcutsSequences;
+            auto shortcutsIter = shortcutsArray.begin();
+            while (shortcutsIter != shortcutsArray.end())
+            {
+                shortcutsSequences << shortcutsIter->toString();
+                shortcutsIter++;
+            }
+            data->setShortcuts(shortcutsSequences);
             buttonsData << data;
-            addShortcut(data->getShortcut());
+            addButton(data->getName());
         }
         iter++;
     }
     file.close();
 }
 
-QStringList ShortcutsModel::getShortcuts() const
+void ShortcutsModel::addButton(const QString &newButton)
 {
-    return shortcuts;
-}
-
-void ShortcutsModel::setShortcuts(const QStringList &value)
-{
-    shortcuts = value;
-    emit shortcutsChanged(value);
-}
-
-void ShortcutsModel::addShortcut(const QString &newShortcut)
-{
-    shortcuts << newShortcut;
-    emit shortcutsChanged(shortcuts);
+    buttons << newButton;
+    emit buttonsChanged(buttons);
 }

@@ -46,12 +46,12 @@ void ButtonData::setSoundsSource(const QString &value)
     soundsSource = value;
 }
 
-QString ButtonData::getShortcut() const
+QStringList ButtonData::getShortcuts() const
 {
-    return shortcut;
+    return shortcuts;
 }
 
-void ButtonData::setShortcut(const QString &value)
+void ButtonData::setShortcuts(const QStringList &value)
 {
-    shortcut = value;
+    shortcuts = value;
 }
