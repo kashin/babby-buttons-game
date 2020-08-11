@@ -7,6 +7,20 @@
         "shortcuts":["а","f"]
     },
     {
+        "name":"Коза",
+        "color":"white",
+        "imageSource":"qrc:/images/Goat.jpg",
+        "soundSource":"qrc:/sounds/goat.mp3",
+        "shortcuts":["к","r"]
+    },
+    {
+        "name":"Лимон",
+        "color":"yellow",
+        "imageSource":"qrc:/images/Limon.jpg",
+        "soundSource":"",
+        "shortcuts":["л","k"]
+    },
+    {
         "name":"Медведь",
         "color":"black",
         "imageSource":"qrc:/images/Bear.jpg",

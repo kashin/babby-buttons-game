@@ -68,6 +68,7 @@ ApplicationWindow {
 
     MediaPlayer {
         id: soundSource
+        loops: MediaPlayer.Infinite
     }
 
     ShortcutsModel {
