@@ -96,6 +96,14 @@
     "soundSource":"sounds/egret.wav",
     "voiceLine":"czaplya",
     "shortcuts":["ц","w"]
+    },
+    {
+    "name":"Щука",
+    "color":"lightgrey",
+    "imageSource":"qrc:/images/Pike.jpg",
+    "soundSource":"",
+    "voiceLine":"Schuka",
+    "shortcuts":["щ","o"]
     }
 ]
 }
