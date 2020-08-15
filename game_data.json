@@ -1,9 +1,11 @@
-[
+{
+ "dataPath":"file:///home/don/projects/BabyButtonsGame/",
+ "data":[
     {
         "name":"Альпака",
         "color":"aqua",
         "imageSource":"qrc:/images/Alpaca.jpg",
-        "soundSource":"qrc:/sounds/alpaca.wav",
+        "soundSource":"sounds/alpaca.wav",
         "voiceLine":"Alpaka",
         "shortcuts":["а","f"]
     },
@@ -11,7 +13,7 @@
         "name":"Дятел",
         "color":"orangered",
         "imageSource":"qrc:/images/Woodpecker.jpg",
-        "soundSource":"qrc:/sounds/woodpecker.wav",
+        "soundSource":"sounds/woodpecker.wav",
         "voiceLine":"Deyatel",
         "shortcuts":["д","l"]
     },
@@ -43,8 +45,57 @@
         "name":"Медведь",
         "color":"black",
         "imageSource":"qrc:/images/Bear.jpg",
-        "soundSource":"qrc:/sounds/bear.mp3",
+        "soundSource":"sounds/bear.mp3",
         "voiceLine":"Med ved",
         "shortcuts":["м","v"]
+    },
+    {
+    "name":"Небо",
+    "color":"deepskyblue",
+    "imageSource":"qrc:/images/Sky.jpg",
+    "soundSource":"sounds/sky.wav",
+    "voiceLine":"Nebo",
+    "shortcuts":["н","y"]
+    },
+    {
+    "name":"Орел",
+    "color":"lightgrey",
+    "imageSource":"qrc:/images/Eagle.jpg",
+    "soundSource":"sounds/eagle.wav",
+    "voiceLine":"Orel",
+    "shortcuts":["о","j"]
+    },
+    {
+    "name":"Поезд",
+    "color":"darkgrey",
+    "imageSource":"qrc:/images/Train.jpg",
+    "soundSource":"sounds/train.wav",
+    "voiceLine":"Poe zd",
+    "shortcuts":["п","g"]
+    },
+    {
+    "name":"Река",
+    "color":"cyan",
+    "imageSource":"qrc:/images/River.jpg",
+    "soundSource":"sounds/river.wav",
+    "voiceLine":"Reka",
+    "shortcuts":["р","h"]
+    },
+    {
+    "name":"Утка",
+    "color":"yellow",
+    "imageSource":"qrc:/images/Duck.jpg",
+    "soundSource":"sounds/duck.wav",
+    "voiceLine":"Utka",
+    "shortcuts":["у","e"]
+    },
+    {
+    "name":"Цапля",
+    "color":"white",
+    "imageSource":"qrc:/images/Egret.jpg",
+    "soundSource":"sounds/egret.wav",
+    "voiceLine":"czaplya",
+    "shortcuts":["ц","w"]
     }
 ]
+}

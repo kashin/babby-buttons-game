@@ -43,4 +43,12 @@ HEADERS += \
 
 DISTFILES += \
     README \
-    game_data.json
+    game_data.json \
+    sounds/duck.wav \
+    sounds/eagle.wav \
+    sounds/egret.wav \
+    sounds/river.wav \
+    sounds/train.wav \
+    sounds/woodpecker.wav \
+    sounds/bear.mp3 \
+    sounds/alpaca.wav

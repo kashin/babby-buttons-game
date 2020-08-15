@@ -17,6 +17,8 @@ static const QLatin1String BUTTON_SOUND_SORCE_KEY("soundSource");
 static const QLatin1String BUTTON_VOICE_LINE_KEY("voiceLine");
 static const QLatin1String BUTTON_SHORTCUT_KEY("shortcuts");
 static const QLatin1String DEFAULT_SHORTCUTS_DATA_PATH("game_data.json");
+static const QLatin1String DATA_PATH_KEY("dataPath");
+static const QLatin1String DATA_KEY("data");
 
 ShortcutsModel::ShortcutsModel(QObject *parent)
     : QObject(parent),
@@ -39,7 +41,12 @@ QString ShortcutsModel::buttonColor(int index)
 QString ShortcutsModel::buttonSoundSource(int index)
 {
     auto button = findButtonDataByIndex(index);
-    return button ? button->getSoundsSource() : QString();
+    QString result = button ? button->getSoundsSource() : QString();
+    if (!result.startsWith("qrc:/") && !result.isEmpty())
+    {
+        result.prepend(pathToData);
+    }
+    return result;
 }
 
 QString ShortcutsModel::buttonVoiceLine(int index)
@@ -71,7 +78,9 @@ void ShortcutsModel::loadShortcuts(const QString &dataPath)
     QFile file(path);
     file.open(QIODevice::ReadOnly);
     QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-    QJsonArray buttons = doc.array();
+    QJsonObject mainObject = doc.object();
+    pathToData = mainObject.value(DATA_PATH_KEY).toString();
+    QJsonArray buttons = mainObject.value(DATA_KEY).toArray();
     auto iter = buttons.begin();
     while (iter != buttons.end())
     {
@@ -103,7 +112,6 @@ void ShortcutsModel::loadShortcuts(const QString &dataPath)
 
 void ShortcutsModel::say(const QString &line)
 {
-    qWarning() << "Voice generator is not available:" << voiceGenerator->state();
     if (!voiceGenerator || voiceGenerator->state() == QTextToSpeech::BackendError)
     {
         qWarning() << "Voice generator is not available:" << voiceGenerator->availableEngines() << voiceGenerator->availableLocales() << voiceGenerator->availableVoices().size();

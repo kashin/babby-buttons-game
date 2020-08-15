@@ -30,6 +30,7 @@ ApplicationWindow {
                     function buttonActionTriggered() {
                         soundSource.stop()
                         buttonsRepeater.currentButtonIndex = index
+                        imageText.text = shortcutsModel.buttonName(index)
                         soundSource.source = shortcutsModel.buttonSoundSource(index)
                         soundSource.play()
                         shortcutsModel.say(shortcutsModel.buttonVoiceLine(index))
@@ -58,9 +59,16 @@ ApplicationWindow {
                 }
             }
         } // Grid
+        Text {
+            id:imageText
+            font.pointSize: 40
+            anchors.top: buttonsGrid.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
         Image {
             id: image
-            anchors.top: buttonsGrid.bottom
+            anchors.top: imageText.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             fillMode: Image.PreserveAspectFit
             width: parent.width
@@ -70,6 +78,9 @@ ApplicationWindow {
     MediaPlayer {
         id: soundSource
         loops: MediaPlayer.Infinite
+        onError: {
+            console.warn(errorString)
+        }
     }
 
     ShortcutsModel {

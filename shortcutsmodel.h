@@ -31,6 +31,7 @@ signals:
     void buttonsChanged(QStringList buttons);
 
 private:
+    QString pathToData;
     QStringList buttons;
     QList<ButtonData*> buttonsData;
     QTextToSpeech *voiceGenerator;
