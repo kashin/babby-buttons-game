@@ -101,7 +101,7 @@
     "name":"Щука",
     "color":"lightgrey",
     "imageSource":"qrc:/images/Pike.jpg",
-    "soundSource":"",
+    "soundSource":"sounds/pike.wav",
     "voiceLine":"Schuka",
     "shortcuts":["щ","o"]
     }
