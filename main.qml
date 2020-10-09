@@ -86,6 +86,25 @@ ApplicationWindow {
     ShortcutsModel {
         id: shortcutsModel
     }
+    Shortcut {
+        // rotate 'clicked' buttons by space
+        context: Qt.ApplicationShortcut
+        enabled: true
+        sequence: "space"
+        onActivated: {
+            imageText.forceActiveFocus()
+            soundSource.stop()
+            buttonsRepeater.currentButtonIndex++
+            if (buttonsRepeater.currentButtonIndex > buttonsRepeater.count) {
+                buttonsRepeater.currentButtonIndex = 0
+            }
+            imageText.text = shortcutsModel.buttonName(buttonsRepeater.currentButtonIndex)
+            soundSource.source = shortcutsModel.buttonSoundSource(buttonsRepeater.currentButtonIndex)
+            soundSource.play()
+            shortcutsModel.say(shortcutsModel.buttonVoiceLine(buttonsRepeater.currentButtonIndex))
+            image.source = shortcutsModel.buttonImageSource(buttonsRepeater.currentButtonIndex)
+        }
+    }
     Component.onCompleted: {
         shortcutsModel.loadShortcuts("")
     }

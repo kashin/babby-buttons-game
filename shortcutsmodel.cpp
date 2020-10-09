@@ -58,7 +58,12 @@ QString ShortcutsModel::buttonVoiceLine(int index)
 QString ShortcutsModel::buttonImageSource(int index)
 {
     auto button = findButtonDataByIndex(index);
-    return button ? button->getImageSource() : QString();
+    QString result = button ? button->getImageSource() : QString();
+    if (!result.startsWith("qrc:/") && !result.isEmpty())
+    {
+        result.prepend(pathToData);
+    }
+    return result;
 }
 
 QStringList ShortcutsModel::buttonShortcuts(int index) const

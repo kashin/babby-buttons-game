@@ -10,6 +10,14 @@
         "shortcuts":["а","f"]
     },
     {
+        "name":"Белка",
+        "color":"chocolate",
+        "imageSource":"images/Squirrel.jpg",
+        "soundSource":"sounds/Squirrel.wav",
+        "voiceLine":"Belka",
+        "shortcuts":["б",","]
+    },
+    {
         "name":"Дятел",
         "color":"orangered",
         "imageSource":"qrc:/images/Woodpecker.jpg",
@@ -18,9 +26,25 @@
         "shortcuts":["д","l"]
     },
     {
+        "name":"Ежик",
+        "color":"darkgrey",
+        "imageSource":"images/Hedgehog.jpg",
+        "soundSource":"sounds/Hedgehog.wav",
+        "voiceLine":"Eshik",
+        "shortcuts":["е","t"]
+    },
+    {
+        "name":"Жаба",
+        "color":"forestgreen",
+        "imageSource":"images/Toad.jpg",
+        "soundSource":"sounds/Toad.mp3",
+        "voiceLine":"Zhaba",
+        "shortcuts":["ж",";"]
+    },
+    {
         "name":"Йошкар-Ола",
         "color":"yellowgreen",
-        "imageSource":"qrc:/images/Yoshkorola.jpg",
+        "imageSource":"images/Yoshkorola.jpg",
         "soundSource":"",
         "voiceLine":"Yoshkor ollaa",
         "shortcuts":["й","q"]
@@ -36,7 +60,7 @@
     {
         "name":"Лимон",
         "color":"yellow",
-        "imageSource":"qrc:/images/Limon.jpg",
+        "imageSource":"images/Limon.jpg",
         "soundSource":"",
         "voiceLine":"Limon",
         "shortcuts":["л","k"]
@@ -68,7 +92,7 @@
     {
     "name":"Поезд",
     "color":"darkgrey",
-    "imageSource":"qrc:/images/Train.jpg",
+    "imageSource":"images/Train.jpg",
     "soundSource":"sounds/train.wav",
     "voiceLine":"Poe zd",
     "shortcuts":["п","g"]
@@ -82,12 +106,28 @@
     "shortcuts":["р","h"]
     },
     {
+        "name":"Суслик",
+        "color":"blanchedalmond",
+        "imageSource":"images/Ground-Squirrel.jpg",
+        "soundSource":"sounds/ground-squirrel.wav",
+        "voiceLine":"Suslik",
+        "shortcuts":["с","c"]
+    },
+    {
     "name":"Утка",
     "color":"yellow",
     "imageSource":"qrc:/images/Duck.jpg",
     "soundSource":"sounds/duck.wav",
     "voiceLine":"Utka",
     "shortcuts":["у","e"]
+    },
+    {
+        "name":"Фламинго",
+        "color":"hotpink",
+        "imageSource":"images/Flamingo.jpg",
+        "soundSource":"sounds/Flamingo.wav",
+        "voiceLine":"flamingo",
+        "shortcuts":["ф","a"]
     },
     {
     "name":"Цапля",

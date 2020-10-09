@@ -1,5 +1,7 @@
 TODO: add proper README file :)
 
+For sounds data huge thanks to freesound.org
+
 Build dependencies:
 * qtspeech5-flite-plugin
 * libqt5texttospeech5-dev
